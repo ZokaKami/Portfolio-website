@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import Loadingscreen from "/components/loadingScreen.tsx"
+import { useState } from "react";
+import Header from "/components/header.tsx"
  
 function App() {
-  const [count, setCount] = useState(0)
+  const [progress, setProgress] = useState(0);
 
   return (
-    <>
-       <h1>hi</h1>
-    </>
+    <div className="font-alegreya  " >
+      {progress < 130 ? (
+        <Loadingscreen progress={progress} setProgress={setProgress}/>
+      ) : (
+        <Header progress={progress}/>
+      )}
+      
+    </div>
   )
 }
 

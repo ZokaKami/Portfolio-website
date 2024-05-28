@@ -1,0 +1,6 @@
+@layer utilities {
+    .text-responsive {
+      font-size: calc(1rem + 1vw);
+    }
+  }
+  
