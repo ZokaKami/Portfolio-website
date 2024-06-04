@@ -1,6 +1,7 @@
 import Loadingscreen from "/components/loadingScreen.tsx"
 import { useState } from "react";
 import Header from "/components/header.tsx"
+import BioNav from "/components/bioNav.tsx"
  
 function App() {
   const [progress, setProgress] = useState(0);
@@ -10,7 +11,11 @@ function App() {
       {progress < 130 ? (
         <Loadingscreen progress={progress} setProgress={setProgress}/>
       ) : (
-        <Header progress={progress}/>
+        <div>
+         
+        <Header progress={progress} className="z-[10]"/>
+        <BioNav className="fixed z-[999]"/>
+        </div>
       )}
       
     </div>

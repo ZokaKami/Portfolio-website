@@ -22,7 +22,8 @@ export default {
       },
        fontSize: {
       'responsive': 'calc(1rem + 5vw)',
-      'responsivebody' : 'calc(1rem + 1vw)'
+      'responsivebody' : 'calc(1rem + 1vw)',
+      'responsivetitle': 'calc(25px + 4vw)'
     },
     fontFamily: {
        

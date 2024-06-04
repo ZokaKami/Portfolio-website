@@ -17,6 +17,10 @@ export default function HeaderIntro() {
       setIsFullScreen(false);
     }
   };
+  const textfade = {
+    backgroundSize: "100% 100%",
+    animation: "fillText 2s linear forwards",
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -28,8 +32,11 @@ export default function HeaderIntro() {
 
   return (
     <div>
-      <div className="flex items-center justify-center">
-        <h1 className="text-black text-[48px] mt-[150px]">
+      <div className="flex px-16 items-center justify-center ">
+        <h1
+          className="text-black text-responsivetitle mt-[120px] text-center"
+          style={textfade}
+        >
           Visualize for the digital legacy
         </h1>
       </div>
@@ -38,14 +45,14 @@ export default function HeaderIntro() {
           isFullScreen ? "w-[100vw] h-[100vh] top-[100%] absolute" : "fixed"
         }  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ease-in-out `}
         style={{
-          width: isFullScreen ? "105vw" : `${size}vw`,
+          width: isFullScreen ? "99vw" : `${size}vw`,
           height: isFullScreen ? "105vh" : `${size}vh`,
         }}
       >
         <img
           src={HeaderCover} // Replace with your image source
           alt="Example"
-          className="w-full h-full object-cover object-right-top"
+          className="w-full h-full object-cover object-right-top ml-[-2px]"
         />
       </div>
     </div>
