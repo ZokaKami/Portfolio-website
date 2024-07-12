@@ -7,22 +7,6 @@ export default function Header({}) {
     <div className="mt-[-4px] ">
       <HeaderMenu />
       <HeaderIntro />
-
-      <div className="h-[700px] ">
-        <h1> gdgjk sdgkd sgk sgksgk sgks gksd gs kdgd ksgksg</h1>
-      </div>
-      <div className="h-[700px] ">
-        <h1> gdgjk sdgkd sgk sgksgk sgks gksd gs kdgd ksgksg</h1>
-      </div>
-      <div className="h-[700px] ">
-        <h1> gdgjk sdgkd sgk sgksgk sgks gksd gs kdgd ksgksg</h1>
-      </div>
-      <div className="h-[700px] ">
-        <h1> gdgjk sdgkd sgk sgksgk sgks gksd gs kdgd ksgksg</h1>
-      </div>
-      <div className="h-[700px] ">
-        <h1> gdgjk sdgkd sgk sgksgk sgks gksd gs kdgd ksgksg</h1>
-      </div>
     </div>
   );
 }

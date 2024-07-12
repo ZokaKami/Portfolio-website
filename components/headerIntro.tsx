@@ -1,58 +1,70 @@
-import React from "react";
+import React, { useRef } from "react";
 import HeaderCover from "./images/headerCoverThree.png";
 import { useState, useEffect } from "react";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 export default function HeaderIntro() {
-  const [scaleFactor, setScaleFactor] = useState(1);
-  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
 
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(imageRef.current, {
+      scale: 1,
+      scrollTrigger: {
+        trigger: imageRef.current,
+        start: "top center", // when the top of the image hits the top of the viewport
+        end: `+=500px    `, // animate over 50% of window height
+        pin: true,
+        scrub: true,
+        markers: true,
+      },
+    });
+  }, []);
   const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    const maxScroll = window.innerHeight / 2; // Adjust this value as needed
-    const newScaleFactor = Math.min(1 + scrollPosition / maxScroll, 2);
-    setScaleFactor(newScaleFactor);
-
-    if (newScaleFactor >= 2) {
-      setIsFullScreen(true);
-    } else {
-      setIsFullScreen(false);
-    }
+    setScrollY(window.scrollY);
   };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const imageScale = 1 + scrollY / 100;
+  console.log(scrollY);
+  console.log(imageScale);
   const textfade = {
     backgroundSize: "100% 100%",
     animation: "fillText 2s linear forwards",
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const initialSize = 50; // initial size as percentage of viewport
-  const size = initialSize * scaleFactor;
-
   return (
     <div>
-      <div className="flex px-16 items-center justify-center ">
+      <div className=" px-16 items-center justify-center  pt-24  ">
         <h1
-          className="text-black text-responsivetitle mt-[120px] text-center"
+          className="text-black text-[120px] mt-[110px] text-center  "
           style={textfade}
         >
-          Visualize for the digital legacy
+          Visualize for
         </h1>
+        <h2 className="text-black text-[120px]  text-center  " style={textfade}>
+          {" "}
+          the digital legacy
+        </h2>
       </div>
-      <div
-        className={`${
-          isFullScreen ? "w-[100vw] h-[100vh] top-[100%] absolute" : "fixed"
-        }  top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-500 ease-in-out `}
-        style={{
-          width: isFullScreen ? "99vw" : `${size}vw`,
-          height: isFullScreen ? "105vh" : `${size}vh`,
-        }}
-      >
+      <div className="  w-[100vw] h-[100vh]    ">
         <img
-          src={HeaderCover} // Replace with your image source
+          ref={imageRef}
+          id="image"
+          src={HeaderCover}
           alt="Example"
-          className="w-full h-full object-cover object-right-top ml-[-2px]"
+          className="w-[100vw] h-[100vh] object-cover absolute top-50% left-50%  object-center scale-50    "
         />
       </div>
     </div>
