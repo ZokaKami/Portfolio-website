@@ -17,11 +17,11 @@ export default function HeaderIntro() {
     gsap.to(imageRef.current, {
       scale: 1,
       snap: "frame",
-
+      duration: 1,
       scrollTrigger: {
         trigger: "#imageRef",
         start: "top top", // when the top of the image hits the top of the viewport
-        end: `+=200%    `, // animate over 50% of window height
+        end: `+=500px   `, // animate over 50% of window height
 
         pin: true,
         scrub: true,
@@ -48,7 +48,7 @@ export default function HeaderIntro() {
   };
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <div className=" px-16 items-center justify-center  pt-24  ">
         <h1
           className="text-black text-[120px] mt-[110px] text-center  "
