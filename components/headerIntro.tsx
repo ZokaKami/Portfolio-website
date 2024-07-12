@@ -16,7 +16,8 @@ export default function HeaderIntro() {
 
     gsap.to(imageRef.current, {
       scale: 1,
-      transformOrigin: "bottom center",
+      snap: "frame",
+
       scrollTrigger: {
         trigger: imageRef.current,
         start: "top top", // when the top of the image hits the top of the viewport
