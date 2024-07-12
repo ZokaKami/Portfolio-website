@@ -16,10 +16,12 @@ export default function HeaderIntro() {
 
     gsap.to(imageRef.current, {
       scale: 1,
+      transformOrigin: "bottom center",
       scrollTrigger: {
         trigger: imageRef.current,
         start: "top top", // when the top of the image hits the top of the viewport
         end: `+=200%    `, // animate over 50% of window height
+
         pin: true,
         scrub: true,
         markers: true,
