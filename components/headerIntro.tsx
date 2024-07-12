@@ -14,12 +14,12 @@ export default function HeaderIntro() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to(imageRef.current, {
-      scale: 1,
+    gsap.to("#imageRef", {
+      borderWidth: "0px",
       snap: "frame",
-      duration: 1,
+      duration: 2,
       scrollTrigger: {
-        trigger: "#imageRef",
+        trigger: "#imageRefContainer",
         start: "top top", // when the top of the image hits the top of the viewport
         end: `+=500px   `, // animate over 50% of window height
 
@@ -61,13 +61,17 @@ export default function HeaderIntro() {
           the digital legacy
         </h2>
       </div>
-      <div className="  w-[100vw] h-[100vh]    " id="imageRef">
+      <div className="  w-[100vw] h-[100vh]  relative  " id="imageRefContainer">
+        <div
+          id="imageRef"
+          className="w-[100vw] h-[100vh] absolute z-20 border-x-[420px] border-y-[60px] border-white"
+        ></div>
         <img
           ref={imageRef}
           id="image"
           src={HeaderCover}
           alt="Example"
-          className="w-[100vw] h-[100vh] object-cover absolute top-50% left-50%  object-center scale-50    "
+          className="w-[100vw] h-[100vh] object-cover absolute       "
         />
       </div>
     </div>
