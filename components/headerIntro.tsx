@@ -19,7 +19,7 @@ export default function HeaderIntro() {
       snap: "frame",
 
       scrollTrigger: {
-        trigger: imageRef.current,
+        trigger: "#imageRef",
         start: "top top", // when the top of the image hits the top of the viewport
         end: `+=200%    `, // animate over 50% of window height
 
@@ -61,7 +61,7 @@ export default function HeaderIntro() {
           the digital legacy
         </h2>
       </div>
-      <div className="  w-[100vw] h-[100vh]    ">
+      <div className="  w-[100vw] h-[100vh]    " id="imageRef">
         <img
           ref={imageRef}
           id="image"
